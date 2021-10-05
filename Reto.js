@@ -22,15 +22,14 @@ Thus we determine that day 1 is the value 0 of our array */
 /*Now that we have our base code with static elements,
  we proceed to encapsulate it in a function with variable parameters*/ 
 const stockPrices = [ 150, 256, 635, 452, 143, 954, 332];
-function calcBuySellday(...stockPrices){
+function calcBuySellday(stockPrices){
     const dayBuy = Math.min(...stockPrices);
     const locationBuy = stockPrices.indexOf(dayBuy) + 1;
     const daySell = Math.max(...stockPrices);
     const locationSell = stockPrices.indexOf(daySell) + 1;
-    return [("Buy on day " + locationBuy),("Sale on day " + locationSell)];
+    return `Buy on day  ${locationBuy}  and Sale on day ${locationSell}`
 };
-calcBuySellday();
-console.log(calcBuySellday(...stockPrices))
+console.log(calcBuySellday(stockPrices))
 
 
 /*Challenge number 3*/
@@ -38,18 +37,19 @@ console.log(calcBuySellday(...stockPrices))
 that the pizza can be sliced into, return the number of pizzas you needed to buy*/ 
 
 
-const pizzaSize = 8
+
 const namesAndSlices = [
-       {name:'joe', slices:8},
-       {name:'cassidy', slices:5},
-       {name:'cami', slices:3}];
-const pizzaSlices = namesAndSlices.map(function(article){
-        return article.slices
-    });
-const totalPizzaSlice = pizzaSlices.reduceRight((before,after)=>{
-        return before + after
-    });
-function pizzaOrder(totalPizzaSlice, pizzaSize){
-    return 'You need to buy ' + (totalPizzaSlice / pizzaSize) + ' pizzas'
-};
-console.log(pizzaOrder(totalPizzaSlice, pizzaSize));
+    {name:'joe', slices:8},
+    {name:'cassidy', slices:5},
+    {name:'cami', slices:3}
+];
+function pizzaOrder(people, slices){
+    const totalSlices = people.reduce((reducedValue, element)=>{
+        reducedValue = reducedValue + element.slices;
+        return reducedValue;
+    }, 0);
+    const totalPizzas = Math.ceil(totalSlices / slices);
+    return `you need to buy ${totalPizzas} pizzas`;
+}
+pizzaOrder(namesAndSlices, 8);
+pizzaOrder([{name:'santi', slices:3},{names:'sebas',slices:7},{name:'gloria', slices:6}], 12);
