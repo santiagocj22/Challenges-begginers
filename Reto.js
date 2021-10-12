@@ -53,3 +53,73 @@ function pizzaOrder(people, slices){
 }
 pizzaOrder(namesAndSlices, 8);
 pizzaOrder([{name:'santi', slices:3},{names:'sebas',slices:7},{name:'gloria', slices:6}], 12);
+
+
+/*Challenge number 4
+given a string containing only characters x and y, change it into a string such that there are no matching adjacent characters.
+you're allowed to delete zero or more  characters in the string. 
+find the minimun number of required deletions.*/ 
+
+
+function everyOther(str) {
+    let counter = 0;
+    let newStr = str[0];
+    for (let i=1; i<str.length;i++) {
+        if (str[i] === str[i - 1]) {
+            counter = counter + 1;
+        } else {
+            newStr = newStr + str[i]
+        }
+    }
+    return `we have deleted ${counter} letters, and the new string is ${newStr}`
+}
+everyOther('xxyxxy');
+/* pseudocode exercises*/
+
+/*exercise 1 create a function that receives two numbers, add their value and return the result;*/
+function add(a,b){
+    var result = 0
+    result = a + b 
+    return result
+}
+
+/*exercise 2 create a function that receives an array of numbers and that multiply each element of the array by zero and return
+the new array*/
+function multiplication(arr){
+    for(let i=0; i<arr.length; i++){
+        arr[i] = arr[i] * 0;
+    }
+    return arr
+}
+/*exercise 3 create a function that receives an array containing letters
+ example: ['a', 'b', 'c'] print 'abc' */
+function transform(arr) {
+    let str = ''
+    for(let i = 0; i < arr.length; i++){
+        str = str + arr[i]
+    }
+    return str
+}
+
+/*exercise 4 create a function that receives an array of numbers, counts how many pairs exist and returns the total*/ 
+
+function pairs(arr) {
+    let count = 0
+    for (let i=0; i<arr.length; i++) {
+       if (arr[i] % 2==0) {
+       count = count + 1;
+       }
+    }
+    return count
+}
+/*exercise 5 create a function that calculates the distance between two points
+in a 2D space.*/
+function distance(x1,y1,x2,y2){
+    let a = [x1 , y1]
+    let b = [x2 , y2]
+    const subtr1 = Math.pow ( (b[0] - a[0]) , 2);
+    const subtr2 = Math.pow ( (b[1] - a[1]) , 2);
+    const add = subtr1 + subtr2;
+    const result = Math.sqrt(add);
+    return result
+}
