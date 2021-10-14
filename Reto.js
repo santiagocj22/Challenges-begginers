@@ -64,7 +64,7 @@ find the minimun number of required deletions.*/
 function everyOther(str) {
     let counter = 0;
     let newStr = str[0];
-    for (let i=1; i<str.length;i++) {
+    for (let i = 1; i < str.length; i++) {
         if (str[i] === str[i - 1]) {
             counter = counter + 1;
         } else {
@@ -85,8 +85,8 @@ function add(a,b){
 
 /*exercise 2 create a function that receives an array of numbers and that multiply each element of the array by zero and return
 the new array*/
-function multiplication(arr){
-    for(let i=0; i<arr.length; i++){
+function multiplication(arr) {
+    for(let i = 0; i < arr.length; i++){
         arr[i] = arr[i] * 0;
     }
     return arr
@@ -95,7 +95,7 @@ function multiplication(arr){
  example: ['a', 'b', 'c'] print 'abc' */
 function transform(arr) {
     let str = ''
-    for(let i = 0; i < arr.length; i++){
+    for(let i = 0; i < arr.length; i++) { 
         str = str + arr[i]
     }
     return str
@@ -105,8 +105,8 @@ function transform(arr) {
 
 function pairs(arr) {
     let count = 0
-    for (let i=0; i<arr.length; i++) {
-       if (arr[i] % 2==0) {
+    for (let i = 0; i < arr.length; i++) {
+       if (arr[i] % 2 == 0) {
        count = count + 1;
        }
     }
@@ -123,3 +123,17 @@ function distance(x1,y1,x2,y2){
     const result = Math.sqrt(add);
     return result
 }
+
+/* exercise 6 given a rowIndex, return an array of the values in that row of pascal's triangle*/
+function pascalTriangle(n) {
+    if (n===0){
+        return [1];
+    } else{
+        const arr = [];
+        const previousRow = pascalTriangle(n-1);
+        for (let i = 0; i < previousRow.length - 1; i++)
+         arr.push(previousRow[i] + previousRow[i+1]);
+       return [1].concat(arr).concat([1]);
+    }      
+  }
+ console.log(pascalTriangle(3))
